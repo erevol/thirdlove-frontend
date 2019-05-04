@@ -1,0 +1,36 @@
+{
+    "name": "thirdlove-frontend",
+    "version": "1.0.0",
+    "description": "Project for Thirdlove",
+    "main": "index.js",
+    "scripts": {
+        "start": "webpack-dev-server --config webpack.config.js --mode development",
+        "build": "webpack --config webpack.config.js"
+    },
+    "author": "Eugenia Revol",
+    "license": "MIT",
+    "devDependencies": {
+        "@babel/core": "^7.4.3",
+        "@babel/plugin-proposal-class-properties": "^7.4.0",
+        "@babel/preset-env": "^7.4.3",
+        "@babel/preset-react": "^7.0.0",
+        "babel-loader": "^8.0.5",
+        "css-loader": "^2.1.1",
+        "file-loader": "^3.0.1",
+        "mini-css-extract-plugin": "^0.6.0",
+        "node-sass": "^4.11.0",
+        "sass-loader": "^7.1.0",
+        "webpack": "^4.30.0",
+        "webpack-cli": "^3.3.0",
+        "webpack-dev-server": "^3.3.1",
+        "webpack-node-externals": "^1.7.2"
+    },
+    "dependencies": {
+        "axios": "^0.18.0",
+        "react": "^16.8.6",
+        "react-dom": "^16.8.6",
+        "react-image-magnify": "^2.7.4",
+        "react-slick": "^0.24.0",
+        "slick-carousel": "^1.8.1"
+    }
+}
