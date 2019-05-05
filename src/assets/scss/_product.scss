@@ -3,24 +3,8 @@
     text-transform: uppercase;
     margin: 24px 20px 15px;
 
-    .naked-1 {
-        background: $color1;
-    }
-
-    .naked-2 {
-        background: $color2;
-    }
-
-    .naked-3 {
-        background: $color3;
-    }
-
-    .naked-4 {
-        background: $color4;
-    }
-
-    .naked-5 {
-        background: $color5;
+    @media only screen and (min-width: $breakpoint-desktop) {
+        flex: 35%;
     }
 
     .color-selector {
@@ -32,15 +16,20 @@
             &__input {
                 position: fixed;
                 visibility: hidden;
-            }
-            &__input:active {
-                outline: none;
+
+                &:active {
+                    outline: none;
+                }
             }
             &__label {
                 float: left;
                 height: 30px;
                 width: 30px;
                 line-height: 30px;
+
+                &:active {
+                    outline: none;
+                }
 
                 &--checked {
                     -webkit-box-shadow: inset 0px 0px 0px 3px $grey3;
@@ -58,25 +47,31 @@
                     position: relative;
                 }
             }
-            &__label:active {
-                outline: none;
-            }
         }
     }
 
     .dropdown-group {
         margin: 22px 0 19px;
 
+        @media only screen and (min-width: $breakpoint-tablet) {
+            width: 50%;
+        }
+
+        @media only screen and (min-width: $breakpoint-desktop) {
+            width: 100%;
+        }
+
         .dropdown {
             display: inline-block;
+            width: 47%;
 
             &--control {
                 display: block;
-                width: 160px;
+                width: 100%;
                 height: 44px;
                 margin-top: 8px;
                 padding: 12px 14px 11px;
-                font-size: 12px;
+                font-size: $font-12;
                 font-weight: 400;
                 line-height: 1.5;
                 color: $pfont;
@@ -94,11 +89,15 @@
                 appearance: none;
                 background: url(../images/arrow-small-dark.png) no-repeat scroll center center;
                 background-position: right 10px top 47%;
+
+                @media only screen and (min-width: $breakpoint-tablet) {
+                    font-size: $font-13;
+                }
             }
             &--label {
                 width: 78px;
                 height: 18px;
-                font-size: $size-13;
+                font-size: $font-13;
                 font-weight: normal;
                 font-style: normal;
                 font-stretch: normal;
@@ -107,43 +106,8 @@
                 color: $primary-color;
             }
             &--first {
-                margin-right: 15px;
+                margin-right: 6%;
             }
-        }
-    }
-    .bra-color {
-        margin: 15px 0 25px;
-        &-item {
-            border: none;
-            border-radius: 50%;
-            display: inline-block;
-            height: 30px;
-            margin-right: 25.5px;
-            width: 29.4px;
-
-            &--active {
-                outline: solid 3px #c9c9c9;
-                outline-offset: -3px;
-            }
-            &--naked-1 {
-                background: $color1;
-            }
-            &--naked-2 {
-                background: $color2;
-            }
-            &--naked-3 {
-                background: $color3;
-            }
-            &--naked-4 {
-                background: $color4;
-            }
-            &--naked-5 {
-                background: $color5;
-            }
-        }
-        &-item:focus {
-            outline: none;
-            border: 3px solid $grey3;
         }
     }
 }

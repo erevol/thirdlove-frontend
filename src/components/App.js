@@ -17,8 +17,13 @@ class App extends Component {
             selectedBandSize: '32',
             selectedCupSize: 'D',
             store: [],
-            loading: false
+            loading: false,
+            width: window.innerWidth
         }
+    }
+
+    componentWillMount() {
+        window.addEventListener('resize', this.handleWindowSizeChange);
     }
 
     componentDidMount() {
@@ -35,25 +40,53 @@ class App extends Component {
             .catch(err => console.log(err));
     }
 
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.handleWindowSizeChange);
+    }
+
     render() {
         return (
             <Fragment>
-                <Header {...this.getHeaderProps()} />
+                {this.state.width < 1440 ? <Header {...this.getHeaderProps()} /> : null}
                 <main>
-                    {/* <Thumbnail /> */}
-                    {this.state.loading ? <div className="loader"></div> : null}
-                    <Slider images={this.getImages()}/>
-                    <ProductForm {...this.getProductFormProps()} />
-                    <ProductDescription {...this.getProductDescriptionProps()} />
+                    <div className="row">
+                        {this.state.loading ? <div className="loader"></div> : null}
+                        {this.state.width < 1440 ? this.renderSlider() : <Thumbnail {...this.getThumbnailProps()} />}
+                        <div className="column">
+                            {this.state.width > 1440 ? <Header {...this.getHeaderProps()} /> : null}
+                            <ProductForm {...this.getProductFormProps()} />
+                        </div>
+                        <ProductDescription {...this.getProductDescriptionProps()} />
+                    </div>
                 </main>
             </Fragment>
         );
     }
 
+    renderSlider = () => {
+        return <Slider {...this.getSliderProps()} />;
+    }
+
+    handleWindowSizeChange = () => {
+        this.setState({ width: window.innerWidth });
+    };
+
     getHeaderProps = () => {
         return {
             heading: this.state.store.title || '',
             price: this.getData('price') || ''
+        };
+    }
+
+    getSliderProps = () => {
+        return {
+            images: this.getImages()
+        };
+    }
+
+    getThumbnailProps = () => {
+        return {
+            images: this.getImages()
         };
     }
 
@@ -93,7 +126,7 @@ class App extends Component {
     }
 
     onChangeCup = e => {
-        this.setState({ [e.target.name]: e.target.value });
+        this.setState({ selectedCupSize: e.target.value });
     }
 
     onChangeBand = e => {
@@ -129,13 +162,13 @@ class App extends Component {
 
     getImages = () => {
         let images = [];
-        const {store} = this.state;
+        const { store } = this.state;
 
         if (!store.images) {
             return null;
         }
 
-        images = store.images.filter((img,index) => this.state.color.substr(-1) == (index+1));
+        images = store.images.filter((img, index) => this.state.color.substr(-1) == (index + 1));
 
         return images;
     }
