@@ -1,10 +1,8 @@
 const path = require('path');
-const mode = process.env.NODE_ENV || 'development';
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-module.exports = {
-    mode,
-    entry: path.resolve(__dirname,'src','index.js'),
+const config = {
+    entry: path.resolve(__dirname, 'src', 'index.js'),
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist'),
@@ -54,8 +52,16 @@ module.exports = {
             filename: 'styles.css',
         })
     ],
-    devServer: {
-        contentBase: path.resolve(__dirname,'src'),
+}
+
+if (process.env.NODE_ENV === 'production') {
+    config.devtool = 'source-map',
+    config.mode = 'production'
+} else {
+    config.mode = 'development'
+    config.devtool = 'inline-source-map';
+    config.devServer = {
+        contentBase: path.resolve(__dirname, 'src'),
         port: 3000,
         proxy: {
             '/**': {
@@ -70,6 +76,7 @@ module.exports = {
                 }
             }
         }
-    },
-    devtool: 'inline-source-map'
+    };
 }
+
+module.exports = config;

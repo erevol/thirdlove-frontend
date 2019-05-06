@@ -7,8 +7,7 @@
 /coverage
 
 # production
-/build
-/config/config.js
+/dist
 
 log/
 

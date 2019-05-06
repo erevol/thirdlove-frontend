@@ -2,10 +2,13 @@
     "name": "thirdlove-frontend",
     "version": "1.0.0",
     "description": "Project for Thirdlove",
-    "main": "index.js",
+    "homepage": "https://erevol.github.io/thirdlove-frontend",
+    "main": "dist/index.js",
     "scripts": {
         "start": "webpack-dev-server --config webpack.config.js --mode development",
-        "build": "webpack --config webpack.config.js"
+        "build": "webpack --config webpack.config.js",
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d dist"
     },
     "author": "Eugenia Revol",
     "license": "MIT",
@@ -27,6 +30,7 @@
     },
     "dependencies": {
         "axios": "^0.18.0",
+        "gh-pages": "^2.0.1",
         "react": "^16.8.6",
         "react-dom": "^16.8.6",
         "react-image-magnify": "^2.7.4",
