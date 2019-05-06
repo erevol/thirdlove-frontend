@@ -30,12 +30,10 @@ const config = {
                 loader: 'file-loader'
             },
             {
-                test: /\.(png|jpg|jpeg|svg|gif)$/,
+                test: /\.(png|jpg|jpeg|svg|gif|ico)$/,
                 loader: 'file-loader',
                 options: {
                     name: '[name].[ext]',
-                    outputPath: 'images',
-                    publicPath: '/images'
                 }
             },
             {
@@ -43,8 +41,6 @@ const config = {
                 loader: 'file-loader',
                 options: {
                     name: '[name].[ext]',
-                    outputPath: 'fonts',
-                    publicPath: '/fonts'
                 }
             },
             {
