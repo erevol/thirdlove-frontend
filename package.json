@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "description": "Project for Thirdlove",
     "homepage": "https://erevol.github.io/thirdlove-frontend",
-    "main": "dist/index.js",
+    "main": "index.js",
     "scripts": {
         "start": "webpack-dev-server --mode development --open --hot",
         "build": "webpack --mode production",
