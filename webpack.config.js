@@ -1,11 +1,22 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CleanWebpackPlugin = require("clean-webpack-plugin");
+
+const settings = {
+    distPath: path.join(__dirname, "dist"),
+    srcPath: path.join(__dirname, "src")
+};
+
+function srcPathExtend(subpath) {
+    return path.join(settings.srcPath, subpath)
+};
 
 const config = {
-    entry: path.resolve(__dirname, 'src', 'index.js'),
+    entry: srcPathExtend('index.js'),
     output: {
         filename: 'bundle.js',
-        path: path.resolve(__dirname, 'dist'),
+        path: settings.distPath,
         publicPath: '/'
     },
     module: {
@@ -50,6 +61,12 @@ const config = {
     plugins: [
         new MiniCssExtractPlugin({
             filename: 'styles.css',
+        }),
+        new CleanWebpackPlugin({
+            verbose: true
+        }),
+        new HtmlWebpackPlugin({
+            template: srcPathExtend('index.html')
         })
     ],
 }
