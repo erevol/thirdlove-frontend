@@ -1,0 +1,47 @@
+.app {
+    &__main {
+        max-width: 900px;
+        margin: auto;
+    }
+    &__loading {
+        height: 4px;
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+        background-color: $white;
+
+        &:before {
+            display: block;
+            position: absolute;
+            content: "";
+            left: -200px;
+            width: 200px;
+            height: 4px;
+            background-color: $color3;
+            animation: loading 2s linear infinite;
+        }
+        @keyframes loading {
+            from {left: -200px; width: 30%;}
+            50% {width: 30%;}
+            70% {width: 70%;}
+            80% { left: 50%;}
+            95% {left: 120%;}
+            to {left: 100%;}
+        }
+    }
+    &__flex-row {
+        @media only screen and (min-width: $breakpoint-desktop) {
+            display: flex;
+            margin-top: 68px;
+        }
+    }
+    &__flex-column {
+        @media only screen and (min-width: $breakpoint-desktop) {
+            width: 55%;
+
+            &--small {
+                width: 45%;
+            }
+        }
+    }
+}

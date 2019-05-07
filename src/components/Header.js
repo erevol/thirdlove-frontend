@@ -7,9 +7,9 @@ class Header extends Component {
 
         return (
             <header>
-                <div className="area-heading">
-                    <h1>{heading}</h1>
-                    <p>{price}</p>
+                <div className="heading-area">
+                    <h1 className="heading-area__heading">{heading}</h1>
+                    <p className="heading-area__price">{price}</p>
                 </div>
             </header>
         );

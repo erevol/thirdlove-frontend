@@ -1,12 +1,10 @@
-/* Header Area css
-============================================================================================ */
-.area-heading {
+.heading-area {
     text-align: center;
     font-stretch: normal;
     font-style: normal;
     margin: 20px;
 
-    h1 {
+    &__heading {
         color: $primary-color;
         font-family: $font1;
         font-size: $font-22;
@@ -20,7 +18,7 @@
             font-size: $font-24;
         }
     }
-    p {
+    &__price {
         color: $secondary-color;
         font-family: $font2;
         font-size: $font-15;

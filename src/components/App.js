@@ -47,20 +47,45 @@ class App extends Component {
     render() {
         return (
             <Fragment>
-                {this.state.width < 1440 ? <Header {...this.getHeaderProps()} /> : null}
-                <main>
-                    <div className="row">
-                        {this.state.loading ? <div className="loader"></div> : null}
-                        {this.state.width < 1440 ? this.renderSlider() : <Thumbnail {...this.getThumbnailProps()} />}
-                        <div className="column">
-                            {this.state.width > 1440 ? <Header {...this.getHeaderProps()} /> : null}
-                            <ProductForm {...this.getProductFormProps()} />
-                        </div>
-                        <ProductDescription {...this.getProductDescriptionProps()} />
-                    </div>
-                </main>
+                {!this.isDesktop() ? <Header {...this.getHeaderProps()} /> : null}
+                <div className="app__main">
+                    {this.isDesktop() ? this.renderDesktop() : this.renderMain()}
+                </div>
             </Fragment>
         );
+    }
+
+    renderMain = () => {
+        return (
+            <div className="app__flex-row">
+                {this.renderLoading()}
+                {this.renderSlider()}
+                <div className="app__flex-column">
+                    <ProductForm {...this.getProductFormProps()} />
+                </div>
+                <ProductDescription {...this.getProductDescriptionProps()} />
+            </div>
+        );
+    }
+
+    renderDesktop = () => {
+        return (
+            <div className="app__flex-row">
+                {this.renderLoading()}
+                <div className="app__flex-column">
+                    <Thumbnail {...this.getThumbnailProps()} />
+                    <ProductDescription {...this.getProductDescriptionProps()} />
+                </div>
+                <div className="app__flex-column--small">
+                    <Header {...this.getHeaderProps()} />
+                    <ProductForm {...this.getProductFormProps()} />
+                </div>
+            </div>
+        );
+    }
+
+    renderLoading = () => {
+        return this.state.loading ? <div className="app__loading"></div> : null;
     }
 
     renderSlider = () => {
@@ -252,6 +277,10 @@ class App extends Component {
             selectedBandSize: bandSizes[0],
             selectedCupSize: cupSizes[0]
         }, this.getCupSizeData);
+    }
+
+    isDesktop = () => {
+        return this.state.width > 1440;
     }
 }
 
