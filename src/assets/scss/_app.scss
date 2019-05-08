@@ -2,6 +2,14 @@
     &__main {
         max-width: 900px;
         margin: auto;
+
+        @media only screen and (min-width: $breakpoint-desktop) {
+            max-width: 1280px;
+        }
+
+        &--hidden {
+            display: none;
+        }
     }
     &__loading {
         height: 4px;
@@ -37,10 +45,11 @@
     }
     &__flex-column {
         @media only screen and (min-width: $breakpoint-desktop) {
-            width: 55%;
+            width: 63%;
+            margin-left: 35px;
 
             &--small {
-                width: 45%;
+                width: 35%;
             }
         }
     }

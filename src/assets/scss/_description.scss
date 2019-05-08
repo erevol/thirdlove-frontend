@@ -2,7 +2,7 @@
     margin: 39px 18px 15px;
 
     @media only screen and (min-width: $breakpoint-desktop) {
-        margin: 29px 0 0;
+        margin: 35px 0 0;
     }
 
     &__heading {
@@ -42,11 +42,15 @@
 
     &__inner-html p {
         margin: 34px 0 17px;
+
+        @media only screen and (min-width: $breakpoint-desktop) {
+            margin: 35px 0 25px;
+        }
     }
 
     &__inner-html ul {
         list-style: disc;
-        margin-left: 16px;
+        margin-left: 15px;
         padding: 0;
     }
 }

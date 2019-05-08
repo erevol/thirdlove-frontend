@@ -1,7 +1,4 @@
 .thumbnail {
-    @media only screen and (min-width: $breakpoint-desktop) {
-        width: 15%;
-    }
     &__img {
         height: 82px;
         width: 74px;
@@ -10,8 +7,8 @@
         cursor: pointer;
 
         @media only screen and (min-width: $breakpoint-desktop) {
-            height: 15%;
-            width: 87%;
+            height: 82px;
+            width: 74px;
         }
     }
 }

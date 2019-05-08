@@ -4,6 +4,10 @@
     font-style: normal;
     margin: 20px;
 
+    @media only screen and (min-width: $breakpoint-desktop) {
+        margin: 22px 0 0 39px;
+    }
+
     &__heading {
         color: $primary-color;
         font-family: $font1;
@@ -27,5 +31,9 @@
         letter-spacing: 1px;
         line-height: normal;
         margin: 0 0 0 13px;
+
+        @media only screen and (min-width: $breakpoint-desktop) {
+            margin: 7px 0 0 0;
+        }
     }
 }

@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
+import classNames from 'classnames';
 import {
     Header, Slider, ProductForm,
     ProductDescription, Thumbnail
@@ -47,8 +48,9 @@ class App extends Component {
     render() {
         return (
             <Fragment>
+                {this.renderLoading()}
                 {!this.isDesktop() ? <Header {...this.getHeaderProps()} /> : null}
-                <div className="app__main">
+                <div className={this.getMainClass()}>
                     {this.isDesktop() ? this.renderDesktop() : this.renderMain()}
                 </div>
             </Fragment>
@@ -58,7 +60,6 @@ class App extends Component {
     renderMain = () => {
         return (
             <div className="app__flex-row">
-                {this.renderLoading()}
                 {this.renderSlider()}
                 <div className="app__flex-column">
                     <ProductForm {...this.getProductFormProps()} />
@@ -71,7 +72,6 @@ class App extends Component {
     renderDesktop = () => {
         return (
             <div className="app__flex-row">
-                {this.renderLoading()}
                 <div className="app__flex-column">
                     <Thumbnail {...this.getThumbnailProps()} />
                     <ProductDescription {...this.getProductDescriptionProps()} />
@@ -95,6 +95,13 @@ class App extends Component {
     handleWindowSizeChange = () => {
         this.setState({ width: window.innerWidth });
     };
+
+    getMainClass = () => {
+        return classNames({
+            'app__main': true,
+            'app__main--hidden': this.state.loading
+        });
+    }
 
     getHeaderProps = () => {
         return {
@@ -147,7 +154,8 @@ class App extends Component {
             return null;
         }
 
-        alert('Added a ' + state.store.title + ' - ' + state.selectedBandSize + state.selectedCupSize + ' to the cart');
+        alert('Added a ' + state.store.title + ' - ' + state.selectedBandSize
+            + state.selectedCupSize + ' to the cart');
     }
 
     onChangeCup = e => {

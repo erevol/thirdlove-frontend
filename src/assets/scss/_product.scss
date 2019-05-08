@@ -4,7 +4,8 @@
     margin: 24px 20px 15px;
 
     @media only screen and (min-width: $breakpoint-desktop) {
-        flex: 35%;
+        // flex: 35%;
+        margin: 30px 0 0 39px;
     }
 
     &__label {
@@ -23,6 +24,10 @@
 
     &__color-selector {
         padding: 0;
+
+        @media only screen and (min-width: $breakpoint-desktop) {
+            margin-bottom: 17px;
+        }
     }
 
     &__item {
@@ -44,6 +49,11 @@
         width: 30px;
         line-height: 30px;
 
+        @media only screen and (min-width: $breakpoint-desktop) {
+            height: 34px;
+            width: 34px;
+        }
+
         &:active {
             outline: none;
         }
@@ -61,6 +71,10 @@
             outline: none;
             padding: 0;
             position: relative;
+
+            @media only screen and (min-width: $breakpoint-desktop) {
+                margin-right: 14px;
+            }
         }
         &--color-1 {
             background: $color1;
@@ -88,6 +102,7 @@
 
         @media only screen and (min-width: $breakpoint-desktop) {
             width: 100%;
+            margin: 20px 0 14px;
         }
     }
 
@@ -137,6 +152,10 @@
         }
         &--first {
             margin-right: 6%;
+
+            @media only screen and (min-width: $breakpoint-desktop) {
+                margin-right: 5%;
+            }
         }
     }
 

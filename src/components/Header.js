@@ -6,11 +6,9 @@ class Header extends Component {
         const { heading, price } = this.props;
 
         return (
-            <header>
-                <div className="heading-area">
-                    <h1 className="heading-area__heading">{heading}</h1>
-                    <p className="heading-area__price">{price}</p>
-                </div>
+            <header className="heading-area">
+                <h1 className="heading-area__heading">{heading}</h1>
+                <p className="heading-area__price">{price}</p>
             </header>
         );
     }
