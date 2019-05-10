@@ -19,7 +19,7 @@ class ProductForm extends Component {
                         <ul className="product-form__color-selector">
                             {this.props.colors.map(color => (
                                 <li key={color} className="product-form__item">
-                                    <input checked={this.props.selectedColor === color} onChange={this.props.onChangeColor}
+                                    <input checked={this.props.color === color} onChange={this.props.onChangeColor}
                                         className="product-form__input" type="radio" name="color" id={color} value={color} />
                                     <label className={this.getColorSelectorClass(color)} htmlFor={color} value={color}></label>
                                 </li>

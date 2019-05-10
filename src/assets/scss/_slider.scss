@@ -5,12 +5,7 @@
     @media only screen and (min-width: $breakpoint-desktop) {
         display: flex;
     }
-    img {
-        width: 100%;
-        height: auto;
-        background: $secondary-color;
-    }
-    .container {
+    &__container {
         margin: 0 auto;
         padding: 0;
         width: 100%;

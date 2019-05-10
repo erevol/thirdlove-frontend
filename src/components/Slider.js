@@ -26,7 +26,7 @@ class Slider extends Component {
 
         return (
             <section className="slider">
-                <div className="container">
+                <div className="slider__container">
                     <ReactSlick {...settings}>
                         {slides.map((src, index) => (
                             <div key={index}>
@@ -38,8 +38,8 @@ class Slider extends Component {
                                         },
                                         largeImage: {
                                             src: largeImg,
-                                            width: 1426,
-                                            height: 2000
+                                            width: 2000,
+                                            height: 2228
                                         },
                                         enlargedImagePosition: 'over'
                                     }}

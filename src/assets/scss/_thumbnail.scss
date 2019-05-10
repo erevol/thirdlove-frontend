@@ -1,14 +1,39 @@
 .thumbnail {
-    &__img {
+
+    &__section {
+        display: flex;
+    }
+    &__item {
+        margin-right: 10px;
+        margin-bottom: 6px;
+    }
+    &__img-container {
+        margin: 0 auto;
+        padding: 0;
+        width: 100%;
+        color: $secondary-color;
+    }
+    &__img-selector {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+    &__input {
+        display: none;
+        // Checked
+        &:checked + label {
+            border: solid 1px $grey4;
+        }
+    }
+    &__label {
+        cursor: pointer;
+        display: inline-flex;
         height: 82px;
         width: 74px;
-        margin-right: 10px;
-        margin-bottom: 10px;
-        cursor: pointer;
-
-        @media only screen and (min-width: $breakpoint-desktop) {
-            height: 82px;
-            width: 74px;
-        }
+    }
+    &__img {
+        width: 100%;
+        height: auto;
+        background: $secondary-color;
     }
 }

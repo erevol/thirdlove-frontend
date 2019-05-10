@@ -28,28 +28,40 @@ class Thumbnail extends Component {
         const largeImg = PATH_HTTPS.concat(images[0].src1000);
 
         return (
-            <section className="slider">
+            <section className="thumbnail__section">
                 <div className="thumbnail">
-                    <div className="thumbnail__img">
-                        <img onClick={()=>this.handleClick(smallImg,largeImg)} src={tinyImg}></img>
-                    </div>
-                    {slides.map((src, index) => (
-                        <div key={index} className="thumbnail__img">
-                            <img onClick={()=>this.handleClick(imgSmall,imgLarge)} src={imgSmall}></img>
-                        </div>
-                    ))}
+                    <ul className="thumbnail__img-selector">
+                        <li className="thumbnail__item">
+                            <input checked={this.props.selectedImg === 'thumbnail_img_0'} onChange={this.props.onChangeImg}
+                                className="thumbnail__input" type="radio" id="thumbnail_img_0" name="thumbnail_img_0"
+                                value="thumbnail_img_0" />
+                            <label className="thumbnail__label" htmlFor="thumbnail_img_0">
+                                <img className="thumbnail__img" onClick={() => this.handleClick(smallImg, largeImg)} src={tinyImg}></img>
+                            </label>
+                        </li>
+                        {slides.map((item, index) => (
+                            <li key={item} className="thumbnail__item">
+                                <input checked={this.props.selectedImg === `thumbnail_img_${item}`} onChange={this.props.onChangeImg}
+                                    className="thumbnail__input" type="radio" id={`thumbnail_img_${item}`}
+                                    value={`thumbnail_img_${item}`} name={`thumbnail_img_${item}`} />
+                                <label key={index} className="thumbnail__label" htmlFor={`thumbnail_img_${item}`}>
+                                    <img className="thumbnail__img" onClick={() => this.handleClick(imgSmall, imgLarge)} src={imgSmall}></img>
+                                </label>
+                            </li>
+                        ))}
+                    </ul>
                 </div>
-                <div className="container">
+                <div className="thumbnail__img-container">
                     <ReactImageMagnify
                         {...{
                             smallImage: {
                                 isFluidWidth: true,
-                                src: this.state.smallImgSelected,
+                                src: this.getImgSelected(this.props.selectedImg, 'small', smallImg, largeImg),
                             },
                             largeImage: {
-                                src: this.state.largeImgSelected,
-                                width: 1426,
-                                height: 2000
+                                src: this.getImgSelected(this.props.selectedImg, 'large', smallImg, largeImg),
+                                width: 2000,
+                                height: 2228
                             },
                             enlargedImagePosition: 'over'
                         }}
@@ -65,14 +77,35 @@ class Thumbnail extends Component {
             largeImgSelected: large
         })
     }
+
+    getImgSelected = (id, type, smallImg, largeImg) => {
+        const index = id.substr(-1);
+
+        const images = {
+            small: imgSmall,
+            large: imgLarge
+        }
+
+        if (index === '0') {
+            _.assign(images, {
+                small: smallImg,
+                large: largeImg
+            });
+        }
+
+        return images[type];
+    }
 }
 
 Thumbnail.defaultProps = {
-    images: []
+    images: [],
+    selectedImg: 'thumbnail_img_0'
 };
 
 Thumbnail.propTypes = {
-    images: PropTypes.array
+    images: PropTypes.array,
+    selectedImg: PropTypes.string.isRequired,
+    onChangeImg: PropTypes.func.isRequired
 };
 
 export default Thumbnail;

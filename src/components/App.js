@@ -17,6 +17,7 @@ class App extends Component {
             cupSizes: [],
             selectedBandSize: '32',
             selectedCupSize: 'D',
+            selectedImg: 'thumbnail_img_0',
             store: [],
             loading: false,
             width: window.innerWidth
@@ -118,7 +119,9 @@ class App extends Component {
 
     getThumbnailProps = () => {
         return {
-            images: this.getImages()
+            images: this.getImages(),
+            selectedImg: this.state.selectedImg,
+            onChangeImg: this.onChangeImg
         };
     }
 
@@ -168,6 +171,10 @@ class App extends Component {
 
     onChangeColor = e => {
         this.setState({ color: e.target.value }, this.getComboData);
+    }
+
+    onChangeImg = e => {
+        this.setState({ selectedImg: e.target.value });
     }
 
     getData = (type) => {
@@ -283,7 +290,8 @@ class App extends Component {
             bandSizes,
             cupSizes,
             selectedBandSize: bandSizes[0],
-            selectedCupSize: cupSizes[0]
+            selectedCupSize: cupSizes[0],
+            selectedImg: 'thumbnail_img_0'
         }, this.getCupSizeData);
     }
 
